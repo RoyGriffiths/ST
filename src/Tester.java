@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
+
 import org.junit.Test;
+
 import st1920.automaton.RegExpMatcher;
 
 public class Tester {
@@ -8,37 +10,46 @@ public class Tester {
 	
 	@Test 
 	public void bug1() {
-		RegExpMatcher test = new RegExpMatcher();
-		boolean match = test.matches("", "");
+		boolean match = RegExpMatcher.matches("", "");
 		assertEquals(true, match);
 	}
 	
 	@Test 
 	public void bug2() {
-		RegExpMatcher test = new RegExpMatcher();
-		boolean match = test.matches(" ", "");
+		boolean match = RegExpMatcher.matches(" ", "");
 		assertEquals(true, match);
 	}
 
 	@Test
 	public void bug3() {
-		RegExpMatcher test = new RegExpMatcher();
-		boolean match = test.matches("Hi", "Hii|Hi");
+		boolean match = RegExpMatcher.matches("Hi", "Hii|Hi");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void bug9() {
+		boolean match = RegExpMatcher.matches("8", "<5 - 10>");
 		assertEquals(true, match);
 	}
 	
 	@Test
 	public void bug11() {
-		RegExpMatcher test = new RegExpMatcher();
-		boolean match = test.matches("", "hello?");
+		boolean match = RegExpMatcher.matches("", "hello?");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void bug15() {
+		boolean match = RegExpMatcher.matches("abccc", "abc*");
 		assertEquals(true, match);
 	}
 	
 	@Test 
 	public void test() {
-		RegExpMatcher test = new RegExpMatcher();
-		boolean match = test.matches("ab", "([a-z]){2}");
+		boolean match = RegExpMatcher.matches("abc", "(abc)+");
 		assertEquals(true, match);
 	}
+	
+	
 
 }
