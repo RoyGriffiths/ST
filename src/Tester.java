@@ -27,6 +27,12 @@ public class Tester {
 	}
 	
 	@Test
+	public void bug4() {
+		boolean match = RegExpMatcher.matches("a1", "a1a");
+		assertEquals(true, match);
+	}
+	
+	@Test
 	public void bug9() {
 		boolean match = RegExpMatcher.matches("8", "<5 - 10>");
 		assertEquals(true, match);
@@ -46,7 +52,7 @@ public class Tester {
 	
 	@Test 
 	public void test() {
-		boolean match = RegExpMatcher.matches("abc", "(abc)+");
+		boolean match = RegExpMatcher.matches("abhay", "[^a-zA-Z0-9]");
 		assertEquals(true, match);
 	}
 	
