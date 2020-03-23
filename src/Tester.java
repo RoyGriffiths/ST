@@ -33,6 +33,12 @@ public class Tester {
 	}
 	
 	@Test
+	public void bug5() {
+		boolean match = RegExpMatcher.matches("abhay?7", "([a-10])");
+		assertEquals(true, match);
+	}
+	
+	@Test
 	public void bug6() {
 		boolean match = RegExpMatcher.matches("Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!", "(a-z)*(!.A-Z)+");
 		assertEquals(true, match);
@@ -53,6 +59,12 @@ public class Tester {
 	@Test
 	public void bug9() {
 		boolean match = RegExpMatcher.matches("8", "<5 - 10>");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void bug10() {
+		boolean match = RegExpMatcher.matches("42", "<42-42>");
 		assertEquals(true, match);
 	}
 	
@@ -88,7 +100,7 @@ public class Tester {
 	
 	@Test 
 	public void test() {
-		boolean match = RegExpMatcher.matches("akajd", "(^[a-z][A-Z])*");
+		boolean match = RegExpMatcher.matches("159834579142", "<15-5298357923875923785927952>");
 		assertEquals(true, match);
 	}
 	
