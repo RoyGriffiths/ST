@@ -32,6 +32,18 @@ public class Tester {
 		assertEquals(true, match);
 	}
 	
+	@Test 
+	public void bug7() {
+		boolean match = RegExpMatcher.matches("()", "( {}     )");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void bug8() {
+		boolean match = RegExpMatcher.matches("5", "**+*+{5}{20}");
+		assertEquals(true, match);
+	}
+	
 	@Test
 	public void bug9() {
 		boolean match = RegExpMatcher.matches("8", "<5 - 10>");
@@ -58,7 +70,7 @@ public class Tester {
 	
 	@Test 
 	public void test() {
-		boolean match = RegExpMatcher.matches("", "()");
+		boolean match = RegExpMatcher.matches("6", "<10 - 5>");
 		assertEquals(true, match);
 	}
 	
