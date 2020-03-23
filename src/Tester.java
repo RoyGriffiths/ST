@@ -6,7 +6,7 @@ import st1920.automaton.RegExpMatcher;
 
 public class Tester {
 	
-	public static boolean debug = false;
+	public static boolean debug = true;
 	
 	@Test 
 	public void bug1() {
@@ -29,6 +29,12 @@ public class Tester {
 	@Test
 	public void bug4() {
 		boolean match = RegExpMatcher.matches("a1", "a1a");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void bug6() {
+		boolean match = RegExpMatcher.matches("Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!", "(a-z)*(!.A-Z)+");
 		assertEquals(true, match);
 	}
 	
@@ -57,9 +63,21 @@ public class Tester {
 	}
 	
 	@Test
+	public void bug12() {
+		boolean match = RegExpMatcher.matches("()ajsfhaksjfa", "[(()a-z)]*");
+		assertEquals(true, match);
+	}
+	
+	@Test
 	public void bug13() {
 		boolean match = RegExpMatcher.matches("", "()");
 		assertEquals(true, match); 
+	}
+	
+	@Test
+	public void bug14() {
+		boolean match = RegExpMatcher.matches("][", "[]");
+		assertEquals(true, match);
 	}
 	
 	@Test
@@ -70,10 +88,9 @@ public class Tester {
 	
 	@Test 
 	public void test() {
-		boolean match = RegExpMatcher.matches("6", "<10 - 5>");
+		boolean match = RegExpMatcher.matches("akajd", "(^[a-z][A-Z])*");
 		assertEquals(true, match);
 	}
-	
 	
 
 }
