@@ -109,99 +109,226 @@ public class tester {
 	//Roy's added tests 
 	///////////////////////////////////////////////////////////////
 	
+	
+	
 	@Test
-	public void anyDigTest() {
+	public void manTest01() {
+		boolean match = RegExpMatcher.matches("11", "~([^a-z]&[0-9])*");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest02() {
+		boolean match = RegExpMatcher.matches("11", "[^a-z]");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest03() {
+		boolean match = RegExpMatcher.matches("11", "^!");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest04() {
+		boolean match = RegExpMatcher.matches("11", "^(//+){0,}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest05() {
+		boolean match = RegExpMatcher.matches("[a-z]", "^([0-9]*)");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest06() {
+		boolean match = RegExpMatcher.matches("11", "[^a-z]{0,}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest07() {
+		boolean match = RegExpMatcher.matches("1", "[^a-z]{1}");
+		assertEquals(true, match);
+	}
+	@Test
+	public void manTest08() {
+		boolean match = RegExpMatcher.matches("11", "[^a-z]{,-1}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest09() {
+		boolean match = RegExpMatcher.matches("b", "(<^0-9>*)");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest10() {
+		boolean match = RegExpMatcher.matches("1", "^(#*)");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest11() {
+		boolean match = RegExpMatcher.matches("1", "^(@*)");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest12() {
+		boolean match = RegExpMatcher.matches("1", "(@){0,99}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest13() {
+		boolean match = RegExpMatcher.matches("1", "^(@){0,}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest14() {
+		boolean match = RegExpMatcher.matches("1", "^(#){0,99}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest15() {
+		boolean match = RegExpMatcher.matches("az", "([a-z]*[A-Z]*[0-9]*)*");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest16() {
+		boolean match = RegExpMatcher.matches("az", "~([a-z]*[A-Z]*[0-9]*.*)+");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest17() {
+		boolean match = RegExpMatcher.matches("az", "(.*[^a-z]*[^A-Z]*[^0-9]*.*){0,99}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest18() {
+		boolean match = RegExpMatcher.matches("@", "<0-9>*");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest19() {
 		boolean match = RegExpMatcher.matches("@", "<0-9>");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void tripleDigTest() {
+	public void manTest20() {
+		boolean match = RegExpMatcher.matches("@", "<10-99>");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest21() {
 		boolean match = RegExpMatcher.matches("@", "<100-999>");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void quadDigTest() {
+	public void manTest22() {
 		boolean match = RegExpMatcher.matches("@", "<1000-9999>");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void fiveDigTest() {
+	public void manTest23() {
 		boolean match = RegExpMatcher.matches("@", "<10000-99999>");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyLowerLetterTest() {
+	public void manTest24() {
 		boolean match = RegExpMatcher.matches("@", "[a-z]");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyUpperTest() {
+	public void manTest25() {
 		boolean match = RegExpMatcher.matches("@", "[A-Z]");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyLetter() {
+	public void manTest26() {
 		boolean match = RegExpMatcher.matches("@", "([a-z] | [A-Z])");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyLetterStar() {
+	public void manTest27() {
 		boolean match = RegExpMatcher.matches("@", "([a-z] | [A-Z])*");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyLetterAllNum() {
+	public void manTest28() {
 		boolean match = RegExpMatcher.matches("@", "([a-z] | [A-Z]){0,99999999}");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyLetterMoreThan() {
+	public void manTest29() {
 		boolean match = RegExpMatcher.matches("@", "([a-z] | [A-Z]){0,}");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyButLetter() {
+	public void manTest30() {
 		boolean match = RegExpMatcher.matches("@", "~([a-z] | [A-Z])");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void anyButNum() {
+	public void manTest31() {
 		boolean match = RegExpMatcher.matches("@", "~(<0-9>*)*");
 		assertEquals(true, match);
 	}
 
 	@Test
-	public void noNumOrLetter() {
+	public void manTest32() {
 		boolean match = RegExpMatcher.matches("@", "~(([a-z] | [A-Z])&(<0-9>*))");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void noNumOrLetter2() {
+	public void manTest33() {
 		boolean match = RegExpMatcher.matches("@", "~([a-z] & [A-Z]&(<0-9>))");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void noLetter2() {
+	public void manTest34() {
 		boolean match = RegExpMatcher.matches("@", "~([a-z] & [A-Z])");
 		assertEquals(true, match);
 	}
 	
 	@Test
-	public void noUpperLetter2() {
+	public void manTest35() {
 		boolean match = RegExpMatcher.matches("11", "~([a-z] & [A-Z])");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest36() {
+		boolean match = RegExpMatcher.matches("\\", "\\");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest37() {
+		boolean match = RegExpMatcher.matches("\\+", "(\\+)!");
 		assertEquals(true, match);
 	}
 }
