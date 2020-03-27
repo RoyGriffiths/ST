@@ -23,7 +23,7 @@ public class tester {
 
 	@Test
 	public void bug3() {
-		boolean match = RegExpMatcher.matches("Hi", "Hii|Hi");
+		boolean match = RegExpMatcher.matches("[a-z]*", "[a-z][a-z]|[a-z]*");
 		assertEquals(true, match);
 	}
 	
@@ -35,13 +35,13 @@ public class tester {
 	
 	@Test 
 	public void bug5() {
-		boolean match = RegExpMatcher.matches("4", "[a-5]");
+		boolean match = RegExpMatcher.matches("<0-9>", "[a-9]");
 		assertEquals(true, match);
 	}
 	
 	@Test
 	public void bug6() {
-		boolean match = RegExpMatcher.matches("Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!", "(a-z)*(!.A-Z)+");
+		boolean match = RegExpMatcher.matches("Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!", "(a-z)*(!.A-Z)+");
 		assertEquals(true, match);
 	}
 	
@@ -59,7 +59,7 @@ public class tester {
 	
 	@Test
 	public void bug9() {
-		boolean match = RegExpMatcher.matches("8", "<5 - 10>");
+		boolean match = RegExpMatcher.matches("@", "<0 - 99>");
 		assertEquals(true, match);
 	}
 	
@@ -98,12 +98,7 @@ public class tester {
 		boolean match = RegExpMatcher.matches("abccc", "abc*");
 		assertEquals(true, match);
 	}
-	
-	@Test
-	public void ztest() {
-		boolean match = RegExpMatcher.matches("hi\\", "hi\\");
-		assertEquals(true, match);
-	}
+
 	
 	///////////////////////////////////////////////////////////////
 	//Roy's added tests 
@@ -274,7 +269,7 @@ public class tester {
 	
 	@Test
 	public void manTest28() {
-		boolean match = RegExpMatcher.matches("@", "([a-z] | [A-Z]){0,99999999}");
+		boolean match = RegExpMatcher.matches("@", "([a-z] | [A-Z]){0,99}");
 		assertEquals(true, match);
 	}
 	
@@ -329,6 +324,138 @@ public class tester {
 	@Test
 	public void manTest37() {
 		boolean match = RegExpMatcher.matches("\\+", "(\\+)!");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest38() {
+		boolean match = RegExpMatcher.matches("+a", "(+a)!");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest39() {
+		boolean match = RegExpMatcher.matches("*a", "*a)");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest40() {
+		boolean match = RegExpMatcher.matches("*a", "<");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest41() {
+		boolean match = RegExpMatcher.matches("*a", "<>");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest42() {
+		boolean match = RegExpMatcher.matches("*a", "&&&");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest43() {
+		boolean match = RegExpMatcher.matches("*a", "()<>");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest44() {
+		boolean match = RegExpMatcher.matches("*a", "<->");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest45() {
+		boolean match = RegExpMatcher.matches("*a", "??++*");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest46() {
+		boolean match = RegExpMatcher.matches("*a", "><");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest47() {
+		boolean match = RegExpMatcher.matches("*a", "-&0");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest48() {
+		String s = "Hi";
+		boolean match = RegExpMatcher.matches(s + "Hello", "(s + c)" + s );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest49() {
+		String s = "1";
+		boolean match = RegExpMatcher.matches(s + "Hello", "(s + c)"+s + "{0}" );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest50() {
+		String s = "*!?|$$£&";
+		boolean match = RegExpMatcher.matches(s + "Hello", "(s + c)"+s + "{1,99}" );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest51() {
+		String s = "*!?|$$£&||";
+		boolean match = RegExpMatcher.matches(s + "Hello", "(s + c)"+s + "{1,99}" );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest52() {
+		String s = "*!?|$$£&||";
+		boolean match = RegExpMatcher.matches(s + "Hello", "[s&-]" );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest53() {
+		String s = "*!?|$$£&||";
+		boolean match = RegExpMatcher.matches("", "{{0," );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest54() {
+		String s = "";
+		boolean match = RegExpMatcher.matches("(", "((," );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest55() {
+		String s = "";
+		boolean match = RegExpMatcher.matches("aa", "[a-a]" );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest56() {
+		String s = "a";
+		String b = "b";
+		boolean match = RegExpMatcher.matches("", s+b+"{5,0}" );
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest57() {
+		String s = "a";
+		String b = "b";
+		boolean match = RegExpMatcher.matches("", s+"&"+b+"{5,0}" );
 		assertEquals(true, match);
 	}
 }
