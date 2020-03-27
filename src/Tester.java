@@ -8,13 +8,13 @@ public class Tester {
 	
 	public static boolean debug = true;
 	
-	@Test 
+	@Test
 	public void bug1() {
 		boolean match = RegExpMatcher.matches("", "");
 		assertEquals(true, match);
 	}
-	
-	@Test 
+
+	@Test
 	public void bug2() {
 		boolean match = RegExpMatcher.matches(" ", "");
 		assertEquals(true, match);
@@ -22,87 +22,81 @@ public class Tester {
 
 	@Test
 	public void bug3() {
-		boolean match = RegExpMatcher.matches("Hi", "Hii|Hi");
+		boolean match = RegExpMatcher.matches("[a-z]*", "[a-z][a-z]|[a-z]*");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug4() {
 		boolean match = RegExpMatcher.matches("a1", "a1a");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug5() {
-		boolean match = RegExpMatcher.matches("abhay?7", "([a-10])");
+		boolean match = RegExpMatcher.matches("<0-9>", "[a-9]");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug6() {
-		boolean match = RegExpMatcher.matches("Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!", "(a-z)*(!.A-Z)+");
+		boolean match = RegExpMatcher.matches(
+				"Does anyone have any hint for bug 6? Task1. Thank you!Does anyone have any hint for bug 6? Task1. Thank you!",
+				"(a-z)*(!.A-Z)+");
 		assertEquals(true, match);
 	}
-	
-	@Test 
+
+	@Test
 	public void bug7() {
 		boolean match = RegExpMatcher.matches("()", "( {}     )");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug8() {
 		boolean match = RegExpMatcher.matches("5", "**+*+{5}{20}");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug9() {
-		boolean match = RegExpMatcher.matches("8", "<5 - 10>");
+		boolean match = RegExpMatcher.matches("@", "<0 - 99>");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug10() {
-		boolean match = RegExpMatcher.matches("42", "<42-42>");
+		boolean match = RegExpMatcher.matches("42", "<0-99>");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug11() {
 		boolean match = RegExpMatcher.matches("", "hello?");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug12() {
 		boolean match = RegExpMatcher.matches("()ajsfhaksjfa", "[(()a-z)]*");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug13() {
 		boolean match = RegExpMatcher.matches("", "()");
-		assertEquals(true, match); 
+		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug14() {
 		boolean match = RegExpMatcher.matches("][", "[]");
 		assertEquals(true, match);
 	}
-	
+
 	@Test
 	public void bug15() {
 		boolean match = RegExpMatcher.matches("abccc", "abc*");
 		assertEquals(true, match);
 	}
-	
-	@Test 
-	public void test() {
-		boolean match = RegExpMatcher.matches("159834579142", "<15-5298357923875923785927952>");
-		assertEquals(true, match);
-	}
-	
-
 }
