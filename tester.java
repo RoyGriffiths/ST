@@ -9,6 +9,12 @@ public class tester {
 	
 	public static boolean debug = false;
 	
+	
+	
+	///////////////////////////////////////////////////////////////
+	//Task 1 tests
+	///////////////////////////////////////////////////////////////
+	
 	@Test 
 	public void bug1() {
 		boolean match = RegExpMatcher.matches("", "");
@@ -101,10 +107,8 @@ public class tester {
 
 	
 	///////////////////////////////////////////////////////////////
-	//Roy's added tests 
+	//Manually added tests 
 	///////////////////////////////////////////////////////////////
-	
-	
 	
 	@Test
 	public void manTest01() {
@@ -453,9 +457,15 @@ public class tester {
 	
 	@Test
 	public void manTest57() {
-		String s = "a";
-		String b = "b";
-		boolean match = RegExpMatcher.matches("", s+"&"+b+"{5,0}" );
+		Integer s = 1*5;
+		String b = "1";
+		boolean match = RegExpMatcher.matches("", Integer.getInteger(b).toString()+"{0}");
+		assertEquals(true, match);
+	}
+	
+	@Test
+	public void manTest58() {
+		boolean match = RegExpMatcher.matches("", "\"\\\"\"");
 		assertEquals(true, match);
 	}
 }
